@@ -6,108 +6,108 @@
 ![Pinecone](https://img.shields.io/badge/Pinecone-000000?style=for-the-badge&logo=pinecone&logoColor=white)
 ![Google Gemini](https://img.shields.io/badge/Google%20Gemini-4285F4?style=for-the-badge&logo=google&logoColor=white)
 
-> **DocuChat** è una piattaforma RAG (Retrieval-Augmented Generation) che trasforma documentazione statica in PDF in un motore di intelligenza conversazionale interattivo. Il sistema permette agli utenti di conversare con i propri documenti per ottenere risposte istantanee con citazioni delle fonti.
+> **DocuChat** is a RAG (Retrieval-Augmented Generation) platform that transforms static PDF documentation into an interactive conversational intelligence engine. The system allows users to chat with their documents to get instant answers with source citations.
 
 ---
 
-## 📖 Indice
-- [Panoramica](#-panoramica)
-- [Architettura e Tecnologie](#-architettura-e-tecnologie)
-- [Funzionalità Principali](#-funzionalità-principali)
-- [Interfaccia](#-interfaccia)
-- [Installazione e Avvio](#-installazione-e-avvio)
-- [Configurazione Avanzata](#-configurazione-avanzata)
-- [Autore](#-autore)
+## 📖 Table of Contents
+- [Overview](#-overview)
+- [Architecture and Technologies](#-architecture-and-technologies)
+- [Key Features](#-key-features)
+- [Interface](#-interface)
+- [Installation and Setup](#-installation-and-setup)
+- [Advanced Configuration](#-advanced-configuration)
+- [Author](#-author)
 
 ---
 
-## 🔭 Panoramica
+## 🔭 Overview
 
-Il progetto nasce per risolvere il problema della ricerca inefficiente in documentazione non strutturata. Le aziende annegano in dati sparsi (manuali, contratti legali, policy HR), rendendo difficile trovare risposte specifiche senza scorrere centinaia di pagine. DocuChat offre una soluzione intelligente che comprende semanticamente i documenti e permette ricerche conversazionali istantanee.
+The project was created to solve the problem of inefficient search in unstructured documentation. Companies drown in scattered data (manuals, legal contracts, HR policies), making it difficult to find specific answers without scrolling through hundreds of pages. DocuChat offers an intelligent solution that semantically understands documents and enables instant conversational searches.
 
-### Punti di Forza
-* **Ricerca Semantica Avanzata:** Comprende l'intento dell'utente oltre il semplice matching di parole chiave, utilizzando embeddings vettoriali.
-* **Citazioni Verificabili:** Ogni risposta AI include numeri di pagina specifici per garantire affidabilità e tracciabilità delle informazioni.
-* **Supporto Multilingua:** Completamente capace di comprendere e rispondere in italiano, inglese e altre lingue principali.
+### Key Strengths
+* **Advanced Semantic Search:** Understands user intent beyond simple keyword matching, using vector embeddings.
+* **Verifiable Citations:** Every AI response includes specific page numbers to ensure reliability and traceability of information.
+* **Multilingual Support:** Fully capable of understanding and responding in Italian, English, and other major languages.
 
 ---
 
-## 🛠 Architettura e Tecnologie
+## 🛠 Architecture and Technologies
 
-Il sistema opera su una pipeline semplificata in due fasi: **Ingestion** (caricamento) e **Retrieval** (recupero con RAG), implementando un'architettura moderna e scalabile.
+The system operates on a simplified two-phase pipeline: **Ingestion** (upload) and **Retrieval** (RAG retrieval), implementing a modern and scalable architecture.
 
 ### Backend (AI Stack)
-* **Framework:** Next.js 14 con **App Router** e Server Actions.
-* **AI Orchestration:** **LangChain** per gestione catena RAG e operazioni AI.
-* **Vector Database:** **Pinecone** per ricerca semantica ad alta velocità con Namespaces per isolamento dati.
-* **LLM:** **Google Gemini** (`gemini-1.5-flash` default, compatibile con Free Tier).
+* **Framework:** Next.js 14 with **App Router** and Server Actions.
+* **AI Orchestration:** **LangChain** for RAG chain management and AI operations.
+* **Vector Database:** **Pinecone** for high-speed semantic search with Namespaces for data isolation.
+* **LLM:** **Google Gemini** (`gemini-1.5-flash` default, compatible with Free Tier).
 
 ### Frontend (Modern React)
-* **Core:** Next.js 14 con **TypeScript** per type safety e manutenibilità.
-* **UI & Styling:** Design system moderno con interfaccia drag-and-drop intuitiva.
-* **Real-time Chat:** Sistema di messaggistica conversazionale con streaming delle risposte.
+* **Core:** Next.js 14 with **TypeScript** for type safety and maintainability.
+* **UI & Styling:** Modern design system with intuitive drag-and-drop interface.
+* **Real-time Chat:** Conversational messaging system with streaming responses.
 
 ---
 
-## ✨ Funzionalità Principali
+## ✨ Key Features
 
-### 📤 Upload e Ingestion
-* **Drag & Drop Interface:** Caricamento intuitivo di documenti PDF.
-* **Processing Pipeline:** Il PDF viene pulito, diviso in chunk di testo, convertito in vettori matematici (embeddings) e memorizzato in Pinecone.
-* **Document Management:** Visualizzazione e gestione dei documenti caricati.
+### 📤 Upload and Ingestion
+* **Drag & Drop Interface:** Intuitive upload of PDF documents.
+* **Processing Pipeline:** The PDF is cleaned, split into text chunks, converted into mathematical vectors (embeddings), and stored in Pinecone.
+* **Document Management:** Visualization and management of uploaded documents.
 
-### 💬 Chat Conversazionale
-* **Context-Aware Retrieval:** Quando un utente pone una domanda, il sistema cerca in Pinecone i chunk più rilevanti e li invia a Gemini AI per generare una risposta accurata.
-* **Source Citations:** Ogni risposta include riferimenti specifici alle pagine del documento originale.
-* **Multilingual Support:** Puoi caricare un manuale in inglese e fare domande in italiano: l'AI tradurrà e sintetizzerà automaticamente la risposta.
+### 💬 Conversational Chat
+* **Context-Aware Retrieval:** When a user asks a question, the system searches Pinecone for the most relevant chunks and sends them to Gemini AI to generate an accurate response.
+* **Source Citations:** Every response includes specific references to pages in the original document.
+* **Multilingual Support:** You can upload a manual in English and ask questions in Italian: the AI will automatically translate and synthesize the response.
 
 ### 🔒 Data Isolation
-* **Namespace Management:** Utilizza Pinecone Namespaces per garantire che le ricerche siano strettamente limitate al documento specifico visualizzato.
-* **Secure Storage:** Embeddings memorizzati in modo sicuro con accesso controllato.
+* **Namespace Management:** Uses Pinecone Namespaces to ensure searches are strictly limited to the specific document being viewed.
+* **Secure Storage:** Embeddings stored securely with controlled access.
 
 ---
 
-## 📸 Interfaccia
+## 📸 Interface
 
 ![Upload Screen](./public/screenshot-upload.png)
 
 ### Chat Interface
-QA in tempo reale con citazioni delle pagine sorgente.
+Real-time Q&A with source page citations.
 
 ![Chat Screen](./public/screenshot-chat.png)
 
 ---
 
-## 💻 Installazione e Avvio
+## 💻 Installation and Setup
 
-Segui questi passaggi per eseguire l'applicazione in locale.
+Follow these steps to run the application locally.
 
-### Prerequisiti
+### Prerequisites
 * **Node.js 18+**
-* **Account Google AI Studio** (per API Gemini - Free Tier disponibile)
-* **Account Pinecone** (Free Tier disponibile)
+* **Google AI Studio Account** (for Gemini API - Free Tier available)
+* **Pinecone Account** (Free Tier available)
 
-### 1. Configurazione Servizi Esterni
-Prima di iniziare, assicurati di avere:
-* **Google AI API Key:** Ottieni la chiave da [Google AI Studio](https://ai.google.dev/)
+### 1. External Services Configuration
+Before starting, make sure you have:
+* **Google AI API Key:** Get the key from [Google AI Studio](https://ai.google.dev/)
 * **Pinecone Setup:**
-  - Crea un account su [Pinecone](https://www.pinecone.io/)
-  - Crea un nuovo Index con:
+  - Create an account on [Pinecone](https://www.pinecone.io/)
+  - Create a new Index with:
     - **Name:** `docuchat-index`
     - **Dimensions:** 768
     - **Metric:** Cosine
 
-### 2. Clone del Repository
+### 2. Repository Clone
 ```bash
 git clone https://github.com/DawsonPeek/docuchat.git
 cd docuchat
 
-# Installa le dipendenze
+# Install dependencies
 npm install
 ```
 
-### 3. Configurazione Environment
-Crea un file `.env.local` nella directory root:
+### 3. Environment Configuration
+Create a `.env.local` file in the root directory:
 
 ```env
 # Google AI Studio (Gemini)
@@ -118,23 +118,23 @@ PINECONE_API_KEY=your_pinecone_api_key_here
 PINECONE_INDEX=docuchat-index
 ```
 
-### 4. Avvio dell'Applicazione
+### 4. Starting the Application
 ```bash
 npm run dev
 ```
 
-L'applicazione sarà accessibile su `http://localhost:3000`.
+The application will be accessible at `http://localhost:3000`.
 
 ---
 
-## 🔧 Configurazione Avanzata
+## 🔧 Advanced Configuration
 
-### Upgrade a Gemini Pro
-Il progetto utilizza `gemini-1.5-flash` di default (gratuito). Gli utenti con piani Google Cloud a pagamento possono passare a `gemini-1.5-pro` per capacità di ragionamento superiori modificando la configurazione.
+### Upgrade to Gemini Pro
+The project uses `gemini-1.5-flash` by default (free). Users with paid Google Cloud plans can switch to `gemini-1.5-pro` for superior reasoning capabilities by modifying the configuration.
 
 ---
 
-## 📬 Autore
+## 📬 Author
 
 [GitHub Profile](https://github.com/DawsonPeek)
 
